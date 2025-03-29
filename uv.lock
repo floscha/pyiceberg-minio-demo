@@ -414,20 +414,21 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/4a/0c/09267e34e2979a71612a3b2d02d25c51fcf35921542fcd9f40bf15073ed0/pyiceberg-0.9.0-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:a9a8699dbdec4ee81ac4dfc77d7489bffac3a7625a28df296657cec1edf79d6d", size = 655880 },
 ]
 
+[package.optional-dependencies]
+pyarrow = [
+    { name = "pyarrow" },
+]
+
 [[package]]
 name = "pyiceberg-minio-demo"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "pyarrow" },
-    { name = "pyiceberg" },
+    { name = "pyiceberg", extra = ["pyarrow"] },
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "pyarrow", specifier = ">=19.0.1" },
-    { name = "pyiceberg", specifier = ">=0.9.0" },
-]
+requires-dist = [{ name = "pyiceberg", extras = ["pyarrow"], specifier = ">=0.9.0" }]
 
 [[package]]
 name = "pyparsing"
